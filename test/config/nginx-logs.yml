@@ -1,0 +1,12 @@
+type: 'file'
+target:
+  podLabels: "app=test pod=nginx"
+  namespace: "default"
+  paths:
+    - "/var/log/nginx/error.log-$(date '+%Y%m%d')"
+    - "/var/log/nginx/access.log-$(date '+%Y%m%d')"
+scheduler:
+  cron: "*/1 * * * *"
+  retention: 5
+  log-retention: 5
+  timeout: 5

@@ -1,0 +1,12 @@
+FROM golang:1.10.1-alpine
+
+ARG APP_VERSION=unkown
+
+ADD . /go/src/gitlab.4medica.net/gke/kube-backup/
+
+WORKDIR /go/src/gitlab.4medica.net/gke/kube-backup/
+
+RUN mkdir -p /dist
+RUN go build -ldflags "-X main.version=$APP_VERSION" -o /dist/kube-backup gitlab.4medica.net/gke/kube-backup/
+
+CMD ["ls"]
